@@ -83,7 +83,7 @@ function wp_scm_curricullum_list($atts, $content = null){
 
 
 	$args  = array(
-		'role' => 'consultor',
+		// 'role' => 'consultor',
 		'orderby' => 'first_name',
 		'meta_query' => array(
 			'relation' => 'OR',
@@ -120,6 +120,14 @@ function wp_scm_curricullum_list($atts, $content = null){
 		$trab_realizados = get_user_meta( $user->ID, 'trab_realizados', true );
 		
 		$href = '<a href="#"></a>';
+
+		$first_name = get_user_meta( $user->ID, 'first_name', true );
+		$last_name = get_user_meta( $user->ID, 'last_name', true );
+		if($first_name) $name = $first_name." ".$last_name;
+		if(!$first_name) $name = $user->display_name; 
+		// echo '<pre>';
+		// print_r($user);
+		// echo '</pre>';
 		?>
 		<div class="scm066_list_row">
 			<div class="">
@@ -134,8 +142,8 @@ function wp_scm_curricullum_list($atts, $content = null){
 				</div>
 			</div>
 			<div class="scm066_list_col_detalhe" >
-				<div class="s066l_title">
-					<div><a href="<?php echo $path_det; ?>?id=<?php echo $user->ID; ?>"><?php echo esc_html( get_user_meta( $user->ID, 'first_name', true ). " ".get_user_meta( $user->ID, 'last_name', true ) ) ?> <img class="s066l_estrelas" src="<?php echo $path_star ?>"></a></div>
+				<div class="s066l_title" style="border:solid 0px gray;">
+					<div><a href="<?php echo $path_det; ?>?id=<?php echo $user->ID; ?>"><?php echo esc_html( $name ) ?> <img class="s066l_estrelas" src="<?php echo $path_star ?>"></a></div>
 				</div>
 				<div class="s066l_detalhe">
 					<div>Ramo de Atividade: <span style="color:#000000;"><?php echo $ramo_atividade; ?></span></div>
@@ -184,6 +192,11 @@ function wp_scm_curricullum_det($atts, $content = null){
 	$scm066_nivel = get_user_meta( $id, 'scm066_nivel', true );
 	if($scm066_nivel) $path_medalha = plugins_url( 'images/nivel_'.$scm066_nivel.'.png', __FILE__ );
 
+	$first_name = get_user_meta( $id, 'first_name', true );
+	$last_name = get_user_meta( $id, 'last_name', true );
+	if($first_name) $name = $first_name." ".$last_name;
+	if(!$first_name) $name = $user->display_name; 
+
 ?>
 
 <?php //echo esc_html( get_user_meta( $id, 'first_name', true ). " ".get_user_meta( $user->ID, 'last_name', true ) ) ?>
@@ -210,7 +223,7 @@ function wp_scm_curricullum_det($atts, $content = null){
 	</div>
 	<div class="scm066_det_col_2">
 		<div class="scm066_det_title_conteiner">
-			<div class="scm066_det_title_col_1" style="font-size: 130%;padding: 0 10px;color:#000000;"><strong><?php echo esc_html( get_user_meta( $id, 'first_name', true ). " ".get_user_meta( $user->ID, 'last_name', true ) ) ?></strong></div>
+			<div class="scm066_det_title_col_1" style="font-size: 130%;padding: 0 10px;color:#000000;"><strong><?php echo $name ?></strong></div>
 			<div class="scm066_det_title_col_2"><img class="s066l_medalha" src="<?php echo $path_medalha ?>"></div>
 		</div>
 
@@ -271,3 +284,10 @@ function wp_scm_curricullum_busca($atts, $content = null){
 
 }
 add_shortcode("wp_scm_curricullum_busca", "wp_scm_curricullum_busca");
+
+
+
+function scm075_enqueue_scripts() {
+	wp_enqueue_style( 'scm075', plugins_url('css/style-0.1.0.css',__FILE__ ), '1.2.0' );
+}
+add_action( 'wp_enqueue_scripts', 'scm075_enqueue_scripts', 999 );

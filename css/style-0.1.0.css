@@ -1,0 +1,239 @@
+
+
+
+
+
+.scm-display-posts > {
+	color: #000000 !important;
+}
+
+.scm-display-posts .listing-item .title {
+	color: #000000 !important;	
+}
+.det_curricullum{
+	color: #000000 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.scm066_det_title_conteiner{
+	border: solid 0px silver;
+
+	-webkit-display: grid;
+	   -moz-display: grid;
+	        display: grid;
+	grid-template-columns: 1fr 80px;
+	/*grid-template-rows: 200px;*/
+	grid-template-areas: "scm066_det_title_col_1  scm066_det_title_col_2";
+
+}
+
+
+
+
+
+
+
+
+
+
+.scm066_det_container {
+	border: solid 0px silver;
+
+	-webkit-display: grid;
+	   -moz-display: grid;
+	        display: grid;
+	grid-template-columns: 200px 1fr;
+	/*grid-template-rows: 200px;*/
+	grid-template-areas: "scm066_det_col_1  scm066_det_col_2";
+
+
+}
+
+.scm066_det_col_1{
+	border: solid 0px silver;	
+}
+
+.scm066_det_col_2{
+	border: solid 0px silver;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scm066_adm_form_table{
+	border: 1px solid silver;
+}
+
+.s066l_foto{
+	border:0px solid #a9abae;
+	border-radius: 14px;
+}
+.avatar {
+	border:0px solid #a9abae;
+	border-radius: 14px;
+
+}
+
+
+
+.border_externa1 {
+    border-radius: 16px;
+    /*border: 0px solid #a9abae;*/
+    background-color: #a9abae;
+    padding: 1px; 
+}
+.border_externa2 {
+  border-radius: 18px;
+  border:0px solid #e6e7e8;
+  padding: 3px;
+  background-color: #e6e7e8;
+}
+.border_externa3 {
+  border-radius: 20px;
+  border:2px solid #91d8f7;
+  /*padding: 10px;*/
+}
+
+
+
+.scm066_list_col_detalhe{
+	margin: 10px;
+	/*border: 1px solid gray;*/
+}
+
+
+
+
+
+.scm066_content {
+	border: 0px solid gray;
+	padding: 10px 0;
+	margin: 10px 0;
+}
+
+.scm066_row{
+	border-bottom: 1px solid gray;
+	padding: 10px 0;
+	margin: 10px 0;
+
+}
+
+.scm066_title{
+	font-style:italic;
+	font-weight:bold;
+}
+
+.scm066_content {
+	padding-bottom: 10px;
+}
+
+
+.scm066_list_row {
+	
+	-webkit-display: grid;
+	   -moz-display: grid;
+	        display: grid;
+	grid-template-columns: 100px 1fr 100px;
+	/*grid-template-rows: 200px;*/
+	grid-template-areas: "scm066_list_col_foto scm066_list_col_detalhe scm066_list_col_medalha";
+
+	/*margin: 10px 0px;*/
+	padding: 10px;
+	border-bottom: 1px solid silver;
+}
+.s066l_detalhe {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+.scm066_list_content div {
+	/*border: 1px solid gray;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.s066l_title {
+	font-size: 130%;
+	color: #000000;
+}
+
+
+
+
+
+
+
+
+
+.s066l_estrelas{
+	width: 100px !important;
+}
+/*.s066l_medalha {
+	width: 25px !important;
+}
+*/
+.s066l_medalha {
+	width: 70px !important;
+}
+
+/*
+@media (min-width: 1170px){
+	.container {
+		max-width: 1170px;
+		padding: 0;
+	}
+}
+*/
+
+@media (max-width: 361px){
+	.scm066_list_row {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-areas: 
+			"scm066_list_col_foto" 
+			"scm066_list_col_detalhe" 
+			"scm066_list_col_medalha"
+		;
+	}
+	.scm066_list_col_foto_1 {
+		text-align: center;
+	}
+	.s066l_medalha {
+		width: 50px !important;
+	}
+
+
+}
+
+
