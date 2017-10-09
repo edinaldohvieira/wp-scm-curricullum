@@ -10,7 +10,7 @@ Consideramos 3 níveis de utilização, a saber:
   
 Utilize os shortcodes:  
   
-###3[wp-scm-curricullum_list]  
+### [wp-scm-curricullum_list]  
 Utilize este shortcode na página onde vocẽ quer que seja exibida a listagem. Exemplo: "/curriculos" ou "/consultores"  
   
 [*wp-scm-curricullum_det*]  
