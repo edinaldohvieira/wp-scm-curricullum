@@ -1,2 +1,2 @@
 # wp-scm-curricullum
-Plugin do WordPress - Exibe uma Listagem, Busca e Detalhes dos Curriculums publicados por cada usuário.
+Plugin do WordPress - Exibe uma LISTAGEM, Busca e DETALHES dos CURRICULLUMs publicados por cada usuário.
