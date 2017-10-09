@@ -13,12 +13,15 @@ Utilize os shortcodes:
 #### [wp_scm_curricullum_list]  
 Utilize este shortcode na página onde vocẽ quer que seja exibida a listagem. Exemplo: "/curriculos" ou "/consultores"  
   
-#### [*wp_scm_curricullum_det*]  
+#### [wp_scm_curricullum_det]  
 Utilize este shortcode na página onde vocẽ quer que seja exibida os detalhes de cada curriculo. geralmente é a página exibida quando se clica em um curriculo da listagem.
   
-#### [*wp_scm_curricullum_busca*]  
+#### [wp_scm_curricullum_busca]  
 Utilize este shortcode para exibir um formulário de busca ou filtragem dos currícullus cadastrados. Geralmente esse shortcode é utilizados no widget lateral.  
   
+#### [wp_scm_curricullum_user_panel]  
+Utilize este shortcode para permitir a edição dos detalhes feita pelo próprio usuário a que pertence o currículo. Cada usuário só pode alterar seu próprio currículo.  
+
 Este plugin adiciona campos extra no cadastro de usuário.  
 Os campos adicionados são:  
 - scm066_estrelas  

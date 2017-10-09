@@ -7,7 +7,7 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.2.0
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -291,3 +291,16 @@ function scm075_enqueue_scripts() {
 	wp_enqueue_style( 'scm075', plugins_url('css/style-0.1.0.css',__FILE__ ), '1.2.0' );
 }
 add_action( 'wp_enqueue_scripts', 'scm075_enqueue_scripts', 999 );
+
+
+
+
+function wp_scm_curricullum_user_panel($atts, $content = null){
+	// extract(shortcode_atts(array(
+	// 	"on_op" => '',
+	// ), $atts));
+
+
+}
+add_shortcode("wp_scm_curricullum_user_panel", "wp_scm_curricullum_user_panel");
+
