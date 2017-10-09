@@ -11,8 +11,10 @@ Consideramos 3 níveis de utilização, a saber:
 Utilize os shortcodes:  
   
 [wp-scm-curricullum_list]  
-Utilize esse shortcode na página onde vocẽ quer que seja exibida a listagem. Exemplo: "/curriculos" ou "/consultores"  
+Utilize este shortcode na página onde vocẽ quer que seja exibida a listagem. Exemplo: "/curriculos" ou "/consultores"  
   
 [wp-scm-curricullum_det]  
-Utilize esse shortcode na página onde vocẽ quer que seja exibida os detalhes de cada curriculo. geralmente é a página exibida quando se clica em um curriculo da listagem.
+Utilize este shortcode na página onde vocẽ quer que seja exibida os detalhes de cada curriculo. geralmente é a página exibida quando se clica em um curriculo da listagem.
   
+[wp-scm-curricullum_busca]  
+Utilize este shortcode exibir um formulário de busca ou filtragem dos currícullus cadastrados. Geralmente esse shortcode é utilizados no widget lateral.  
