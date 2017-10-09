@@ -10,7 +10,7 @@ Consideramos 3 níveis de utilização, a saber:
   
 Utilize os shortcodes:  
   
-### [wp-scm-curricullum_list]  
+#### [wp-scm-curricullum_list]  
 Utilize este shortcode na página onde vocẽ quer que seja exibida a listagem. Exemplo: "/curriculos" ou "/consultores"  
   
 #### [*wp-scm-curricullum_det*]  
@@ -19,9 +19,11 @@ Utilize este shortcode na página onde vocẽ quer que seja exibida os detalhes 
 #### [*wp-scm-curricullum_busca*]  
 Utilize este shortcode para exibir um formulário de busca ou filtragem dos currícullus cadastrados. Geralmente esse shortcode é utilizados no widget lateral.  
   
-Este plugin adiciona campos extra no cadastro de usuario.
-Os campos adicionados são:
+Este plugin adiciona campos extra no cadastro de usuário.  
+Os campos adicionados são:  
 - scm066_estrelas  
 - scm066_nivel  
+  
+Para os detalhes do currícullum, cada usuário posta em um post-type "curricullum" as informações que junto com os campos do cadastro de usuário formam o curricullum.  
   
 
