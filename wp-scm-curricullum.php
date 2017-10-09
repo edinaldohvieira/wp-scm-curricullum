@@ -7,7 +7,8 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.2.0
+ * Version:         0.3.0
+ * Charge log:      Criado o chortcode wp_scm_curricullum_admin_panel
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -303,4 +304,14 @@ function wp_scm_curricullum_user_panel($atts, $content = null){
 
 }
 add_shortcode("wp_scm_curricullum_user_panel", "wp_scm_curricullum_user_panel");
+
+
+function wp_scm_curricullum_admin_panel($atts, $content = null){
+	// extract(shortcode_atts(array(
+	// 	"on_op" => '',
+	// ), $atts));
+
+
+}
+add_shortcode("wp_scm_curricullum_admin_panel", "wp_scm_curricullum_admin_panel");
 
