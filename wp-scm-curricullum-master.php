@@ -7,8 +7,8 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.6
- * Charge log:      v0.6 - Ajustes do campo RAMO DE ATIVIDADE.
+ * Version:         0.7
+ * Charge log:      v0.7 - Ajustes do campo UF.
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -76,7 +76,7 @@ function wp_scm_curricullum_list($atts, $content = null){
 	}
 	if($uf){
 		$nome[] = array(
-			'key' => 's066_uf',
+			'key' => 'scm_uf',
 			'value' => $uf,
 			'compare' => 'LIKE'
 		);
@@ -118,7 +118,7 @@ function wp_scm_curricullum_list($atts, $content = null){
 
 		$ramo_atividade = get_user_meta( $user->ID, 'ramo_atividade', false );
 		$experiencia = get_user_meta( $user->ID, 'experiencia', true );
-		$s066_uf = get_user_meta( $user->ID, 's066_uf', true );
+		$scm_uf = get_user_meta( $user->ID, 'scm_uf', true );
 		$trab_realizados = get_user_meta( $user->ID, 'trab_realizados', true );
 		
 		$href = '<a href="#"></a>';
@@ -169,7 +169,7 @@ function wp_scm_curricullum_list($atts, $content = null){
 						
 					</span></div>
 					<div>Experiência: <span style="color:#000000;"><?php echo $experiencia; ?></span></div>
-					<div>Estado: <span style="color:#000000;"><?php echo $s066_uf; ?></span></div>
+					<div>Estado: <span style="color:#000000;"><strong><?php echo $scm_uf; ?></strong></span></div>
 					<div>Trabalhos realizados: <span style="color:#000000;"><?php echo $trab_realizados; ?></span></div>
 				</div>
 			</div>
@@ -251,7 +251,7 @@ function wp_scm_curricullum_det($atts, $content = null){
 		</div>
 		<div style="padding-bottom: 30px;">
 			<div>UF:</div>
-			<div style="color:#000000;"><?php echo get_user_meta( $user->ID, 's066_uf', true ); ?></div>
+			<div style="color:#000000;"><strong><?php echo get_user_meta( $user->ID, 'scm_uf', true ); ?></strong></div>
 		</div>
 		<div style="padding-bottom: 30px;">
 			<div>Experiência:</div>

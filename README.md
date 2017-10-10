@@ -60,6 +60,8 @@ Um [video mostrando como é feito o upload da foto para o currícullum](http://i
 ### v0.6  
 #### Ajustes do campo RAMO DE ATIVIDADE. 
 
+### v0.7  
+#### Ajustes do campo UF. 
 
 
 
