@@ -7,7 +7,7 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.4
+ * Version:         0.5
  * Charge log:      A foto do curricullum é a mesma do cadastro de usuario do WordPress
  *
  * @package         Wp_Scm_Curricullum
