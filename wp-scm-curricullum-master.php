@@ -410,34 +410,159 @@ add_action( 'init', 'curricullums_post_type', 0 );
 
 
 
+
+function cv_metabox1_add(){
+	add_meta_box( 
+		'cv_metabox1_id', 
+		'Opões', 
+		'cv_metabox1_fnc', 
+		'curricullum', 
+		'normal', //'normal', 'side', and 'advanced'
+		'high' // 'high', 'low'
+	);
+}
+add_action( 'add_meta_boxes', 'cv_metabox1_add' );
+
+/*
+	<p>
+		<label for="texto_meta_box">Text Label</label><br>
+		<input type="text" name="texto_meta_box" id="texto_meta_box" />
+	</p>
+	<p>
+		<input type="checkbox" name="meta_box_check" id="meta_box_check" <?php checked( $check, 'on' ); ?> />
+		<label for="meta_box_check">Don't Check This.</label>
+	</p>
+
+*/
+function cv_metabox1_fnc(){
+	$values = get_post_custom( $post->ID );
+	// $text = isset( $values['texto_meta_box'] ) ? esc_attr( $values['texto_meta_box'][0] ) : '';
+	$selected = isset( $values['cv_metabox1_select1'] ) ? esc_attr( $values['cv_metabox1_select1'][0] ) : '';
+	// $check = isset( $values['meta_box_check'] ) ? esc_attr( $values['meta_box_check'][0] ) : '';
+	wp_nonce_field( 'cv_metabox1_nonce', 'meta_box_nonce' );
+	?>
+	<p>
+		<label for="cv_metabox1_select1">Secção</label><br>
+		<select name="cv_metabox1_select1" id="cv_metabox1_select1" style="width:100%;">
+			<option value="formacao_academica" <?php selected( $selected, 'formacao_academica' ); ?>>001 - Formação academica</option>
+			<option value="especialidades" <?php selected( $selected, 'especialidades' ); ?>>002 - Principais Atribuições e Especialidades</option>
+			<option value="conhecimento_tecnico" <?php selected( $selected, 'conhecimento_tecnico' ); ?>>003 - Conhecimento Técnico</option>
+		</select>
+	</p>
+	<?php
+}
+
+add_action( 'save_post', 'cv_metabox1_save' );
+function cv_metabox1_save( $post_id ){
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'cv_metabox1_nonce' ) ) return;
+	if( !current_user_can( 'edit_post' ) ) return;
+
+	$allowed = array(
+		'a' => array(
+		'href' => array()
+	));
+	// if( isset( $_POST['texto_meta_box'] ) )
+	// update_post_meta( $post_id, 'texto_meta_box', wp_kses( $_POST['texto_meta_box'], $allowed ) );
+
+	if( isset( $_POST['cv_metabox1_select1'] ) )
+	update_post_meta( $post_id, 'cv_metabox1_select1', esc_attr( $_POST['cv_metabox1_select1'] ) );
+
+	// $chk = ( isset( $_POST['meta_box_check'] ) && $_POST['meta_box_check'] ) ? 'on' : 'off';
+	// update_post_meta( $post_id, 'meta_box_check', $chk );
+}
+
+
+
+/*
+
+//ADICIONANDO O META BOX
+add_action( 'add_meta_boxes', 'cv_metabox1_add' );
+function cv_metabox1_add()
+{
+add_meta_box( 'cv_metabox1_id', 'Meu primeiro Meta Box', 'cv_metabox1_fnc', 'post', 'normal', 'high' );
+}
+
+//FORMULARIO PARA SALVAS OS DADOS
+function cv_metabox1_fnc()
+{
+$values = get_post_custom( $post->ID );
+$text = isset( $values['texto_meta_box'] ) ? esc_attr( $values['texto_meta_box'][0] ) : '';
+$selected = isset( $values['cv_metabox1_select1'] ) ? esc_attr( $values['cv_metabox1_select1'][0] ) : '';
+$check = isset( $values['meta_box_check'] ) ? esc_attr( $values['meta_box_check'][0] ) : '';
+wp_nonce_field( 'cv_metabox1_nonce', 'meta_box_nonce' );
+?>
+<p>
+<label for="texto_meta_box">Text Label</label>
+<input type="text" name="texto_meta_box" id="texto_meta_box" />
+</p>
+<p>
+<label for="cv_metabox1_select1">Color</label>
+<select name="cv_metabox1_select1" id="cv_metabox1_select1">
+<option value="red" <?php selected( $selected, 'red' ); ?>>Vermelho</option>
+<option value="blue" <?php selected( $selected, 'blue' ); ?>>Azul</option>
+</select>
+</p>
+<p>
+<input type="checkbox" name="meta_box_check" id="meta_box_check" <?php checked( $check, 'on' ); ?> />
+<label for="meta_box_check">Don't Check This.</label>
+</p>
+<?php
+}
+
+	add_action( 'save_post', 'cv_metabox1_save' );
+	function cv_metabox1_save( $post_id ){
+		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'cv_metabox1_nonce' ) ) return;
+
+		if( !current_user_can( 'edit_post' ) ) return;
+
+		$allowed = array(
+			'a' => array(
+			'href' => array()
+		)
+	);
+
+	if( isset( $_POST['texto_meta_box'] ) )
+	update_post_meta( $post_id, 'texto_meta_box', wp_kses( $_POST['texto_meta_box'], $allowed ) );
+
+	if( isset( $_POST['cv_metabox1_select1'] ) )
+	update_post_meta( $post_id, 'cv_metabox1_select1', esc_attr( $_POST['cv_metabox1_select1'] ) );
+
+	$chk = ( isset( $_POST['meta_box_check'] ) && $_POST['meta_box_check'] ) ? 'on' : 'off';
+	update_post_meta( $post_id, 'meta_box_check', $chk );
+}
+
+*/
+
 function scm_pt_curricullum_list($atts, $content = null){
 	extract(shortcode_atts(array(
 		"user_id" => '',
 	), $atts));
 
 	$ret = '';
-	// $ret .= '---scm_pt_curricullum_list---';
 
-	$args = array(
-		'posts_per_page' => 20,
-		'post_type' => 'curricullum',
-		'orderby'   => 'date',
-		'order'     => 'DESC',
-		'author'	=> $user_id
-
-		 // 's' => $nome
-	);
-	$cv = get_posts( $args );
-	// echo '<pre>';
-	// print_r($show_curricullum);
-	// echo '</pre>';
+	
 	$ret .= '<div style="padding:0 10px;">';
 	$ret .= '<h4 style="margin:0px;">HISTÓRICO CURRICULAR</h4>';
 	$ret .= '</div>';
-	if(is_super_admin()) :
-	$ret .= '<div style="padding:0 10px;"><a title="aparece somente para o dono ou administradores" href="#">adicionar novo</a></div>';
-	endif;
+	
+	// HISTÓRICO CURRICULAR - ini
+	$args = array(
+		'posts_per_page' => 20,
+		'post_type' 	=> 'curricullum',
+		'orderby'   	=> 'date',
+		'order'     	=> 'DESC',
+		'author'		=> $user_id,
+		'meta_key'		=> 'cv_metabox1_select1',
+		'meta_value'	=> 'formacao_academica',
+		 // 's' => $nome
+	);
+	$cv = get_posts( $args );
+
 	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000;"><strong>FORMAÇÃO ACADÊMICA</strong></div>';
 	foreach ($cv as $key => $value) {
 		$titulo = $value->post_title;
 		$descricao = $value->post_content;
@@ -449,18 +574,39 @@ function scm_pt_curricullum_list($atts, $content = null){
 		$ret .= '<br>';
 		$ret .= '<br>';
 		$ret .= '</div>';
-		if(is_super_admin()) :
-			$ret .= '<div style="padding:0 10px;"><a href="'.get_bloginfo('url').'/cv-edit/?task=edit&postid=='.$value->ID.'" title="aparece somente para o dono ou administradores">editar</a> - <a href="#" title="aparece somente para o dono ou administradores">exluir</a></div>';
-		endif;
-		$ret .= '<div style="height:30px;"></div>';
-		$ret .= '<hr>';
-
 	}
-	if(is_super_admin()) :
-		$ret .= '<div style="padding:0 10px;"><a title="aparece somente para o dono ou administradores" href="#">adicionar novo</a></div>';
-	endif;
+	// HISTÓRICO CURRICULAR - end
 
 
+
+	// HISTÓRICO CURRICULAR - ini
+	$args = array(
+		'posts_per_page' => 20,
+		'post_type' 	=> 'curricullum',
+		'orderby'   	=> 'date',
+		'order'     	=> 'DESC',
+		'author'		=> $user_id,
+		'meta_key'		=> 'cv_metabox1_select1',
+		'meta_value'	=> 'especialidades',
+		 // 's' => $nome
+	);
+	$cv = get_posts( $args );
+
+	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>PRINCIPAIS ATRIBUIÇÕES E ESPECIALIDADES</strong></div>';
+	foreach ($cv as $key => $value) {
+		$titulo = $value->post_title;
+		$descricao = $value->post_content;
+
+		$ret .= '<div style="padding:0 10px;">';
+		$ret .= '<strong>'.$titulo.'</strong>';
+		$ret .= '<br>';
+		$ret .= $descricao;
+		$ret .= '<br>';
+		$ret .= '<br>';
+		$ret .= '</div>';
+	}
+	// HISTÓRICO CURRICULAR - end
 	return $ret;
 }
 add_shortcode("scm_pt_curricullum_list", "scm_pt_curricullum_list");
