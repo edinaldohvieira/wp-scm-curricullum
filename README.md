@@ -61,6 +61,16 @@ Um [video mostrando como é feito o upload da foto para o currícullum](http://i
 ### v0.6 - Ajustes do campo RAMO DE ATIVIDADE. 
 ### v0.7 - Ajustes do campo UF. 
 ### v0.8 - Ajustes do campo EXPERIÊNCIA. 
+### v0.9 - Alguns ajustes rapidos. 
+### v0.10 - Historico Curricular. 
+
+
+
+## VIDEOS
+### CADASTRAR HISTORICO CURRICULAR VIA INTERFACE ADMINISTRATIVA
+Um [video mostrando como é feito o cadastro do HISTORICO CURRICULAR para cada usuario](https://youtu.be/uHP-qTw4SaA).  
+  
+
 
 
 
