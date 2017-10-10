@@ -265,7 +265,7 @@ function wp_scm_curricullum_det($atts, $content = null){
 		</div>
 
 		<div class="det_curricullum">
-			<?php echo do_shortcode('[scm_pt_curricullum_list]') ?>
+			<?php echo do_shortcode('[scm_pt_curricullum_list user_id='.$user->ID.']') ?>
 		</div>
 	</div>
 </div>
@@ -402,7 +402,7 @@ function curricullums_post_type() {
 		'has_archive'           => false,		
 		'exclude_from_search'   => true,
 		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+		'capability_type'       => 'post',
 	);
 	register_post_type( 'curricullum', $args );
 }
@@ -411,14 +411,19 @@ add_action( 'init', 'curricullums_post_type', 0 );
 
 
 function scm_pt_curricullum_list($atts, $content = null){
+	extract(shortcode_atts(array(
+		"user_id" => '',
+	), $atts));
+
 	$ret = '';
 	// $ret .= '---scm_pt_curricullum_list---';
 
 	$args = array(
 		'posts_per_page' => 20,
 		'post_type' => 'curricullum',
-		'orderby'          => 'date',
-		'order'            => 'DESC',
+		'orderby'   => 'date',
+		'order'     => 'DESC',
+		'author'	=> $user_id
 
 		 // 's' => $nome
 	);
@@ -445,7 +450,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 		$ret .= '<br>';
 		$ret .= '</div>';
 		if(is_super_admin()) :
-			$ret .= '<div style="padding:0 10px;"><a href="#" title="aparece somente para o dono ou administradores">editar</a> - <a href="#" title="aparece somente para o dono ou administradores">exluir</a></div>';
+			$ret .= '<div style="padding:0 10px;"><a href="'.get_bloginfo('url').'/cv-edit/?task=edit&postid=='.$value->ID.'" title="aparece somente para o dono ou administradores">editar</a> - <a href="#" title="aparece somente para o dono ou administradores">exluir</a></div>';
 		endif;
 		$ret .= '<div style="height:30px;"></div>';
 		$ret .= '<hr>';
