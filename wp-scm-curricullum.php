@@ -126,7 +126,11 @@ function wp_scm_curricullum_list($atts, $content = null){
 		$first_name = get_user_meta( $user->ID, 'first_name', true );
 		$last_name = get_user_meta( $user->ID, 'last_name', true );
 		if($first_name) $name = $first_name." ".$last_name;
-		if(!$first_name) $name = $user->display_name; 
+		if(!$name) $name = $user->display_name; 
+		// if(!$first_name) $name = $user->user_login; 
+		
+
+
 		// echo '<pre>';
 		// print_r($user);
 		// echo '</pre>';
