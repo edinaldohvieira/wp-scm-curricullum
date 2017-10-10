@@ -50,6 +50,7 @@ Para os detalhes do currícullum, cada usuário posta em um post-type a parte ch
 ## Logs
 0.4  
 A foto do curricullum é a mesma do cadastro de usuário do WordPress.   
-Um [video mostrando com é feito o upload da foto](https://youtu.be/u9yHww7tegw). Estamos aqui usando os recursos do plugin "Ultimate Member" para upar e cortar a foto.
-
+  
+Um [![video mostrando com é feito o upload da foto](http://img.youtube.com/vi/u9yHww7tegw/0.jpg)](https://youtu.be/u9yHww7tegw "upload da foto"). Estamos aqui usando os recursos do plugin "Ultimate Member" para upar e cortar a foto.  
+  
   
