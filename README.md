@@ -48,9 +48,18 @@ Para os detalhes do currícullum, cada usuário posta em um post-type a parte ch
   
 
 ## Logs
-0.4  
+### 0.4  
 A foto do curricullum é a mesma do cadastro de usuário do WordPress.   
-[![video mostrando com é feito o upload da foto](http://img.youtube.com/vi/u9yHww7tegw/0.jpg)](https://youtu.be/u9yHww7tegw "Upload da foto - Clique para ver o video no youtube.")
+[![video mostrando como é feito o upload da foto para o curricullum](http://img.youtube.com/vi/u9yHww7tegw/0.jpg)](https://youtu.be/u9yHww7tegw "Upload da foto - Clique para ver o video no youtube.")
   
-Um [video mostrando com é feito o upload da foto](http://img.youtube.com/vi/u9yHww7tegw/0.jpg). Nesse vídeo estamos usando os recursos do plugin "Ultimate Member" para fazer o upload e cortar a foto.  
+Um [video mostrando como é feito o upload da foto para o currícullum](http://img.youtube.com/vi/u9yHww7tegw/0.jpg). Nesse vídeo estamos usando os recursos do plugin "Ultimate Member" para fazer o upload e cortar a foto.  
   
+### v0.5  
+#### Corecao do nome do usuario. 
+
+### v0.6  
+#### Ajustes do campo RAMO DE ATIVIDADE. 
+
+
+
+

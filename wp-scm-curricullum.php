@@ -7,8 +7,8 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.5
- * Charge log:      A foto do curricullum é a mesma do cadastro de usuario do WordPress
+ * Version:         0.6
+ * Charge log:      v0.6 - Ajustes do campo RAMO DE ATIVIDADE.
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -116,7 +116,7 @@ function wp_scm_curricullum_list($atts, $content = null){
 
 		$path_foto = plugins_url( 'images/thumbnail_default-1.png', __FILE__ );
 
-		$ramo_atividade = get_user_meta( $user->ID, 'ramo_atividade', true );
+		$ramo_atividade = get_user_meta( $user->ID, 'ramo_atividade', false );
 		$experiencia = get_user_meta( $user->ID, 'experiencia', true );
 		$s066_uf = get_user_meta( $user->ID, 's066_uf', true );
 		$trab_realizados = get_user_meta( $user->ID, 'trab_realizados', true );
@@ -156,7 +156,18 @@ function wp_scm_curricullum_list($atts, $content = null){
 					<div><a href="<?php echo $path_det; ?>?id=<?php echo $user->ID; ?>"><?php echo esc_html( $name ) ?> <img class="s066l_estrelas" src="<?php echo $path_star ?>"></a></div>
 				</div>
 				<div class="s066l_detalhe">
-					<div>Ramo de Atividade: <span style="color:#000000;"><?php echo $ramo_atividade; ?></span></div>
+					<div>Ramo de Atividade: <span style="color:#000000;">
+					<?php 
+					foreach ($ramo_atividade as $key => $value) {
+						foreach ($value as $key2 => $value2) {
+							echo '<strong>'.$value2.'</strong>';
+							echo ' ';
+						}
+					}
+					
+					?>
+						
+					</span></div>
 					<div>Experiência: <span style="color:#000000;"><?php echo $experiencia; ?></span></div>
 					<div>Estado: <span style="color:#000000;"><?php echo $s066_uf; ?></span></div>
 					<div>Trabalhos realizados: <span style="color:#000000;"><?php echo $trab_realizados; ?></span></div>
@@ -221,7 +232,22 @@ function wp_scm_curricullum_det($atts, $content = null){
 		</div>
 		<div style="padding-bottom: 30px;">
 			<div><i>Ramo de Atividade:</i></div>
-			<div style="color:#000000;"><?php echo get_user_meta( $user->ID, 'ramo_atividade', true ); ?></div>
+			<div style="color:#000000;">
+			<?php $ramo_atividade =  get_user_meta( $user->ID, 'ramo_atividade', false ); ?>
+
+
+					<?php 
+					foreach ($ramo_atividade as $key => $value) {
+						foreach ($value as $key2 => $value2) {
+							echo '<strong>'.$value2.'</strong>';
+							echo ' ';
+						}
+					}
+					
+					?>
+
+				
+			</div>
 		</div>
 		<div style="padding-bottom: 30px;">
 			<div>UF:</div>
