@@ -522,7 +522,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000;"><strong>FORMAÇÃO ACADÊMICA</strong></div>';
 	foreach ($cv as $key => $value) {
 		$titulo = $value->post_title;
-		$descricao = $value->post_content;
+		$descricao = esc_attr($value->post_content);
 
 		$ret .= '<div style="padding:0 10px;">';
 		$ret .= '<strong>'.$titulo.'</strong>';
@@ -746,3 +746,24 @@ sdsdsds
 )
 
 */
+
+
+
+
+function mysite_column_company( $defaults ) {
+    $defaults['mysite-usercolumn-company'] = __('Company', 'user-column');
+    $defaults['mysite-usercolumn-otherfield1'] = __('Other field 1', 'user-column');
+    $defaults['mysite-usercolumn-otherfield2'] = __('Other field 2', 'user-column');
+    return $defaults;
+}
+function mysite_custom_column_company($value, $column_name, $id) {
+    if( $column_name == 'mysite-usercolumn-company' ) {
+        return get_the_author_meta( 'company', $id );
+    }
+    elseif( $column_name == 'mysite-usercolumn-otherfield1' ) {
+        return get_the_author_meta( 'otherfield1', $id );
+    }
+    elseif( $column_name == 'mysite-usercolumn-otherfield2' ) {
+        return get_the_author_meta( 'otherfield2', $id );
+    }
+}
