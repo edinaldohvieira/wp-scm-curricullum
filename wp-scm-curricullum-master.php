@@ -444,9 +444,13 @@ function cv_metabox1_fnc(){
 	<p>
 		<label for="cv_metabox1_select1">Secção</label><br>
 		<select name="cv_metabox1_select1" id="cv_metabox1_select1" style="width:100%;">
-			<option value="formacao_academica" <?php selected( $selected, 'formacao_academica' ); ?>>001 - Formação academica</option>
-			<option value="especialidades" <?php selected( $selected, 'especialidades' ); ?>>002 - Principais Atribuições e Especialidades</option>
-			<option value="conhecimento_tecnico" <?php selected( $selected, 'conhecimento_tecnico' ); ?>>003 - Conhecimento Técnico</option>
+			<option value="formacao_academica" <?php selected( $selected, 'formacao_academica' ); ?>>001 - FORMAÇÃO ACADEMICA</option>
+			<option value="especialidades" <?php selected( $selected, 'especialidades' ); ?>>002 - PRINCIPAIS ATRIBUIÇÕES E ESPECIALIDADES</option>
+			<option value="conhecimento_tecnico" <?php selected( $selected, 'conhecimento_tecnico' ); ?>>003 - CONHECIMENTO TÉCNICO</option>
+			<option value="participacoes_em_cursos_e_eventos" <?php selected( $selected, 'conhecimento_tecnico' ); ?>>004 - PARTICIPAÇÕES EM CURSOS E EVENTOS</option>
+			<option value="ultimos_trabalhos_realizados" <?php selected( $selected, 'conhecimento_tecnico' ); ?>>005 - ÚLTIMOS TRABALHOS REALIZADOS</option>
+			
+
 		</select>
 	</p>
 	<?php
@@ -579,7 +583,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 
 
 
-	// HISTÓRICO CURRICULAR - ini
+	// PRINCIPAIS ATRIBUIÇÕES E ESPECIALIDADES - ini
 	$args = array(
 		'posts_per_page' => 20,
 		'post_type' 	=> 'curricullum',
@@ -606,7 +610,105 @@ function scm_pt_curricullum_list($atts, $content = null){
 		$ret .= '<br>';
 		$ret .= '</div>';
 	}
-	// HISTÓRICO CURRICULAR - end
+	// PRINCIPAIS ATRIBUIÇÕES E ESPECIALIDADES - end
+
+
+
+
+	// CONHECIMENTO TÉCNICO - ini
+	$args = array(
+		'posts_per_page' => 20,
+		'post_type' 	=> 'curricullum',
+		'orderby'   	=> 'date',
+		'order'     	=> 'DESC',
+		'author'		=> $user_id,
+		'meta_key'		=> 'cv_metabox1_select1',
+		'meta_value'	=> 'conhecimento_tecnico',
+		 // 's' => $nome
+	);
+	$cv = get_posts( $args );
+
+	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>CONHECIMENTO TÉCNICO</strong></div>';
+	foreach ($cv as $key => $value) {
+		$titulo = $value->post_title;
+		$descricao = $value->post_content;
+
+		$ret .= '<div style="padding:0 10px;">';
+		$ret .= '<strong>'.$titulo.'</strong>';
+		$ret .= '<br>';
+		$ret .= $descricao;
+		$ret .= '<br>';
+		$ret .= '<br>';
+		$ret .= '</div>';
+	}
+	// CONHECIMENTO TÉCNICO - end
+
+
+
+	// PARTICIPAÇÕES EM CURSOS E EVENTOS - ini
+	$args = array(
+		'posts_per_page' => 20,
+		'post_type' 	=> 'curricullum',
+		'orderby'   	=> 'date',
+		'order'     	=> 'DESC',
+		'author'		=> $user_id,
+		'meta_key'		=> 'cv_metabox1_select1',
+		'meta_value'	=> 'participacoes_em_cursos_e_eventos',
+		 // 's' => $nome
+	);
+	$cv = get_posts( $args );
+
+	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>PARTICIPAÇÕES EM CURSOS E EVENTOS</strong></div>';
+	foreach ($cv as $key => $value) {
+		$titulo = $value->post_title;
+		$descricao = $value->post_content;
+
+		$ret .= '<div style="padding:0 10px;">';
+		$ret .= '<strong>'.$titulo.'</strong>';
+		$ret .= '<br>';
+		$ret .= $descricao;
+		$ret .= '<br>';
+		$ret .= '<br>';
+		$ret .= '</div>';
+	}
+	// PARTICIPAÇÕES EM CURSOS E EVENTOS - end
+
+
+
+	// ÚLTIMOS TRABALHOS REALIZADOS - ini
+	$args = array(
+		'posts_per_page' => 20,
+		'post_type' 	=> 'curricullum',
+		'orderby'   	=> 'date',
+		'order'     	=> 'DESC',
+		'author'		=> $user_id,
+		'meta_key'		=> 'cv_metabox1_select1',
+		'meta_value'	=> 'ultimos_trabalhos_realizados',
+		 // 's' => $nome
+	);
+	$cv = get_posts( $args );
+
+	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>ÚLTIMOS TRABALHOS REALIZADOS</strong></div>';
+	foreach ($cv as $key => $value) {
+		$titulo = $value->post_title;
+		$descricao = $value->post_content;
+
+		$ret .= '<div style="padding:0 10px;">';
+		$ret .= '<strong>'.$titulo.'</strong>';
+		$ret .= '<br>';
+		$ret .= $descricao;
+		$ret .= '<br>';
+		$ret .= '<br>';
+		$ret .= '</div>';
+	}
+	// ÚLTIMOS TRABALHOS REALIZADOS - end
+
+
+	
+
 	return $ret;
 }
 add_shortcode("scm_pt_curricullum_list", "scm_pt_curricullum_list");
