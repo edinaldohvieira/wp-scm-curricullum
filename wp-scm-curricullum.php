@@ -7,8 +7,8 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.3
- * Charge log:      Criado o chortcode wp_scm_curricullum_admin_panel
+ * Version:         0.4
+ * Charge log:      A foto do curricullum é a mesma do cadastro de usuario do WordPress
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 add_filter('widget_text', 'do_shortcode');
 $api_url = 'http://idados.xyz/update/';
 $plugin_slug = basename(dirname(__FILE__));
+// die($plugin_slug);
 add_filter('pre_set_site_transient_update_plugins', 'scm075_check_for_plugin_update');
 function scm075_check_for_plugin_update($checked_data) {
 global $api_url, $plugin_slug, $wp_version;
