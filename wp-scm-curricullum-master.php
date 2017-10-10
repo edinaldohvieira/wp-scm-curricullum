@@ -415,8 +415,11 @@ function scm_pt_curricullum_list($atts, $content = null){
 	// $ret .= '---scm_pt_curricullum_list---';
 
 	$args = array(
-		 'posts_per_page' => 20,
-		 'post_type' => 'curricullum',
+		'posts_per_page' => 20,
+		'post_type' => 'curricullum',
+		'orderby'          => 'date',
+		'order'            => 'DESC',
+
 		 // 's' => $nome
 	);
 	$cv = get_posts( $args );
@@ -424,10 +427,14 @@ function scm_pt_curricullum_list($atts, $content = null){
 	// print_r($show_curricullum);
 	// echo '</pre>';
 	$ret .= '<div style="padding:0 10px;">';
-	$ret .= '<h4>HISTÓRICO CURRICULAR</h4>';
+	$ret .= '<h4 style="margin:0px;">HISTÓRICO CURRICULAR</h4>';
 	$ret .= '</div>';
+	if(is_super_admin()) :
+	$ret .= '<div style="padding:0 10px;"><a title="aparece somente para o dono ou administradores" href="#">adicionar novo</a></div>';
+	endif;
+	$ret .= '<div style="height:20px;"></div>';
 	foreach ($cv as $key => $value) {
-		$titulo .= $value->post_title;
+		$titulo = $value->post_title;
 		$descricao = $value->post_content;
 
 		$ret .= '<div style="padding:0 10px;">';
@@ -437,8 +444,17 @@ function scm_pt_curricullum_list($atts, $content = null){
 		$ret .= '<br>';
 		$ret .= '<br>';
 		$ret .= '</div>';
+		if(is_super_admin()) :
+			$ret .= '<div style="padding:0 10px;"><a href="#" title="aparece somente para o dono ou administradores">editar</a> - <a href="#" title="aparece somente para o dono ou administradores">exluir</a></div>';
+		endif;
+		$ret .= '<div style="height:30px;"></div>';
+		$ret .= '<hr>';
 
 	}
+	if(is_super_admin()) :
+		$ret .= '<div style="padding:0 10px;"><a title="aparece somente para o dono ou administradores" href="#">adicionar novo</a></div>';
+	endif;
+
 
 	return $ret;
 }
@@ -446,6 +462,29 @@ add_shortcode("scm_pt_curricullum_list", "scm_pt_curricullum_list");
 
 
 /*
+
+$args = array(
+	'posts_per_page'   => 5,
+	'offset'           => 0,
+	'category'         => '',
+	'category_name'    => '',
+	'orderby'          => 'date',
+	'order'            => 'DESC',
+	'include'          => '',
+	'exclude'          => '',
+	'meta_key'         => '',
+	'meta_value'       => '',
+	'post_type'        => 'post',
+	'post_mime_type'   => '',
+	'post_parent'      => '',
+	'author'	   => '',
+	'author_name'	   => '',
+	'post_status'      => 'publish',
+	'suppress_filters' => true 
+);
+$posts_array = get_posts( $args ); 
+
+
 
 Array
 (
