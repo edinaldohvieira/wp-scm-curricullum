@@ -7,8 +7,8 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.7
- * Charge log:      v0.7 - Ajustes do campo UF.
+ * Version:         0.8
+ * Charge log:      ### v0.8 - Ajustes do campo EXPERIÊNCIA. 
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -168,7 +168,7 @@ function wp_scm_curricullum_list($atts, $content = null){
 					?>
 						
 					</span></div>
-					<div>Experiência: <span style="color:#000000;"><?php echo $experiencia; ?></span></div>
+					<div>Experiência: <span style="color:#000000;"><strong><?php echo $experiencia; ?></strong></span></div>
 					<div>Estado: <span style="color:#000000;"><strong><?php echo $scm_uf; ?></strong></span></div>
 					<div>Trabalhos realizados: <span style="color:#000000;"><?php echo $trab_realizados; ?></span></div>
 				</div>
@@ -255,7 +255,7 @@ function wp_scm_curricullum_det($atts, $content = null){
 		</div>
 		<div style="padding-bottom: 30px;">
 			<div>Experiência:</div>
-			<div style="color:#000000;"><?php echo get_user_meta( $user->ID, 'experiencia', true ); ?></div>
+			<div style="color:#000000;"><strong><?php echo get_user_meta( $user->ID, 'experiencia', true ); ?></strong></div>
 		</div>
 	</div>
 	<div class="scm066_det_col_2">

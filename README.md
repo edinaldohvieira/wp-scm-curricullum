@@ -45,7 +45,10 @@ Os campos adicionados são:
 Para os detalhes do currícullum, cada usuário posta em um post-type a parte chamado de "curricullum" as informações que junto com os campos do cadastro de usuário formam o que podemos chamar de "CURRICULLUM DO USUARIO".  
   
 
-  
+## DEMOSTRAÇÃO
+[http://hipernovadesign.com.br/teste02/curricullum/](http://hipernovadesign.com.br/teste02/curricullum/)  
+
+
 
 ## Logs
 ### 0.4  
@@ -54,14 +57,10 @@ A foto do curricullum é a mesma do cadastro de usuário do WordPress.
   
 Um [video mostrando como é feito o upload da foto para o currícullum](http://img.youtube.com/vi/u9yHww7tegw/0.jpg). Nesse vídeo estamos usando os recursos do plugin "Ultimate Member" para fazer o upload e cortar a foto.  
   
-### v0.5  
-#### Corecao do nome do usuario. 
-
-### v0.6  
-#### Ajustes do campo RAMO DE ATIVIDADE. 
-
-### v0.7  
-#### Ajustes do campo UF. 
+### v0.5 - Corecao do nome do usuario. 
+### v0.6 - Ajustes do campo RAMO DE ATIVIDADE. 
+### v0.7 - Ajustes do campo UF. 
+### v0.8 - Ajustes do campo EXPERIÊNCIA. 
 
 
 
