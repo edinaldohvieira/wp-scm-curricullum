@@ -7,7 +7,7 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.3.0
+ * Version:         0.3
  * Charge log:      Criado o chortcode wp_scm_curricullum_admin_panel
  *
  * @package         Wp_Scm_Curricullum
@@ -136,7 +136,11 @@ function wp_scm_curricullum_list($atts, $content = null){
 					<div class="border_externa3">
 						<div class="border_externa2">
 							<div class="border_externa1">
-								<a href="<?php echo $path_det; ?>"><img class="s066l_foto" src="<?php echo $path_foto ?>"></a>
+								<a href="<?php echo $path_det; ?>">
+									<!--img class="s066l_foto" src="<?php echo $path_foto ?>"-->
+									<?php echo get_avatar($user->ID) ?> 
+								</a>
+								
 							</div>	
 						</div>
 					</div>
@@ -204,7 +208,8 @@ function wp_scm_curricullum_det($atts, $content = null){
 <div class="scm066_det_container">
 	<div class="scm066_det_col_1">
 		<div >
-			<img class="s066l_foto" src="<?php echo $path_foto ?>">
+			<!--img class="s066l_foto" src="<?php echo $path_foto ?>"-->
+			<?php echo get_avatar($user->ID, 200) ?> 
 		</div>
 		<div style="text-align: center;padding-bottom: 30px;">
 			<img class="s066l_estrelas" src="<?php echo $path_star ?>">

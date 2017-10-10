@@ -22,11 +22,32 @@ Utilize este shortcode para exibir um formulário de busca ou filtragem dos curr
 #### [wp_scm_curricullum_user_panel]  
 Utilize este shortcode para permitir a edição dos detalhes feita pelo próprio usuário a que pertence o currículo. Cada usuário só pode alterar seu próprio currículo.  
 
+#### [wp_scm_curricullum_admin_panel]  
+Utilize este short code em uma página especifica para permitr que administradores possam alterar qualquer curriculo.
+
+
+
+
+
+## MODIFICAÇÕES E NOVOS RECURSOS PREVISTOS
+- A foto do currículo é a mesma foto do usuario
+
+## INFORMAÇÕES ADICIONAIS
+
+### Campos xtras no cadastro de usuário
 Este plugin adiciona campos extra no cadastro de usuário.  
 Os campos adicionados são:  
 - scm066_estrelas  
 - scm066_nivel  
   
-Para os detalhes do currícullum, cada usuário posta em um post-type "curricullum" as informações que junto com os campos do cadastro de usuário formam o curricullum.  
+
+### POST-TYPE CURRICULLUM
+Para os detalhes do currícullum, cada usuário posta em um post-type a parte chamado de "curricullum" as informações que junto com os campos do cadastro de usuário formam o que podemos chamar de "CURRICULLUM DO USUARIO".  
   
 
+  
+
+## Logs
+0.4  
+A foto do curricullum é a mesma do cadastro de usuário do WordPress  
+  
