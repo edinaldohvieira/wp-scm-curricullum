@@ -436,7 +436,7 @@ add_action( 'add_meta_boxes', 'cv_metabox1_add' );
 */
 function cv_metabox1_fnc(){
 	$values = get_post_custom( $post->ID );
-	// $text = isset( $values['texto_meta_box'] ) ? esc_attr( $values['texto_meta_box'][0] ) : '';
+	$observacoes = isset( $values['observacoes'] ) ? esc_attr( $values['observacoes'][0] ) : '';
 	$selected = isset( $values['cv_metabox1_select1'] ) ? esc_attr( $values['cv_metabox1_select1'][0] ) : '';
 	// $check = isset( $values['meta_box_check'] ) ? esc_attr( $values['meta_box_check'][0] ) : '';
 	wp_nonce_field( 'cv_metabox1_nonce', 'meta_box_nonce' );
@@ -453,6 +453,8 @@ function cv_metabox1_fnc(){
 
 		</select>
 	</p>
+
+
 	<?php
 }
 
@@ -466,8 +468,8 @@ function cv_metabox1_save( $post_id ){
 		'a' => array(
 		'href' => array()
 	));
-	// if( isset( $_POST['texto_meta_box'] ) )
-	// update_post_meta( $post_id, 'texto_meta_box', wp_kses( $_POST['texto_meta_box'], $allowed ) );
+	// if( isset( $_POST['observacoes'] ) )
+	// update_post_meta( $post_id, 'observacoes', wp_kses( $_POST['observacoes'], $allowed ) );
 
 	if( isset( $_POST['cv_metabox1_select1'] ) )
 	update_post_meta( $post_id, 'cv_metabox1_select1', esc_attr( $_POST['cv_metabox1_select1'] ) );
@@ -476,69 +478,20 @@ function cv_metabox1_save( $post_id ){
 	// update_post_meta( $post_id, 'meta_box_check', $chk );
 }
 
-
-
 /*
 
-//ADICIONANDO O META BOX
-add_action( 'add_meta_boxes', 'cv_metabox1_add' );
-function cv_metabox1_add()
-{
-add_meta_box( 'cv_metabox1_id', 'Meu primeiro Meta Box', 'cv_metabox1_fnc', 'post', 'normal', 'high' );
-}
+	<p>
+		<label for="texto_meta_box">Observações</label><br>
+		<?php 
+$content = $observacoes;
+$editor_id = 'observacoes';
 
-//FORMULARIO PARA SALVAS OS DADOS
-function cv_metabox1_fnc()
-{
-$values = get_post_custom( $post->ID );
-$text = isset( $values['texto_meta_box'] ) ? esc_attr( $values['texto_meta_box'][0] ) : '';
-$selected = isset( $values['cv_metabox1_select1'] ) ? esc_attr( $values['cv_metabox1_select1'][0] ) : '';
-$check = isset( $values['meta_box_check'] ) ? esc_attr( $values['meta_box_check'][0] ) : '';
-wp_nonce_field( 'cv_metabox1_nonce', 'meta_box_nonce' );
-?>
-<p>
-<label for="texto_meta_box">Text Label</label>
-<input type="text" name="texto_meta_box" id="texto_meta_box" />
-</p>
-<p>
-<label for="cv_metabox1_select1">Color</label>
-<select name="cv_metabox1_select1" id="cv_metabox1_select1">
-<option value="red" <?php selected( $selected, 'red' ); ?>>Vermelho</option>
-<option value="blue" <?php selected( $selected, 'blue' ); ?>>Azul</option>
-</select>
-</p>
-<p>
-<input type="checkbox" name="meta_box_check" id="meta_box_check" <?php checked( $check, 'on' ); ?> />
-<label for="meta_box_check">Don't Check This.</label>
-</p>
-<?php
-}
+wp_editor( $content, $editor_id );
 
-	add_action( 'save_post', 'cv_metabox1_save' );
-	function cv_metabox1_save( $post_id ){
-		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-
-		if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'cv_metabox1_nonce' ) ) return;
-
-		if( !current_user_can( 'edit_post' ) ) return;
-
-		$allowed = array(
-			'a' => array(
-			'href' => array()
-		)
-	);
-
-	if( isset( $_POST['texto_meta_box'] ) )
-	update_post_meta( $post_id, 'texto_meta_box', wp_kses( $_POST['texto_meta_box'], $allowed ) );
-
-	if( isset( $_POST['cv_metabox1_select1'] ) )
-	update_post_meta( $post_id, 'cv_metabox1_select1', esc_attr( $_POST['cv_metabox1_select1'] ) );
-
-	$chk = ( isset( $_POST['meta_box_check'] ) && $_POST['meta_box_check'] ) ? 'on' : 'off';
-	update_post_meta( $post_id, 'meta_box_check', $chk );
-}
-
+		 ?>
+	</p>
 */
+
 
 function scm_pt_curricullum_list($atts, $content = null){
 	extract(shortcode_atts(array(
@@ -708,6 +661,22 @@ function scm_pt_curricullum_list($atts, $content = null){
 
 
 	
+	// OBSERVAÇÕES - ini
+
+	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>OBSERVAÇÕES</strong></div>';
+
+	// OBSERVAÇÕES - end
+
+
+
+	// VIDEO APRESENTAÇÃO - ini
+
+	$ret .= '<div style="height:20px;"></div>';
+	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>VIDEO APRESENTAÇÃO</strong></div>';
+
+	// VIDEO APRESENTAÇÃO - end
+
 
 	return $ret;
 }
