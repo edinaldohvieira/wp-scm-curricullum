@@ -7,8 +7,8 @@
  * Author URI:      https://github.com/edinaldohvieira
  * Text Domain:     wp-scm-curricullum
  * Domain Path:     /languages
- * Version:         0.8
- * Charge log:      ### v0.8 - Ajustes do campo EXPERIÊNCIA. 
+ * Version:         0.10
+ * Charge log:      v0.10 - Inicio de configuração do historico curricular. 
  *
  * @package         Wp_Scm_Curricullum
  */
@@ -218,9 +218,9 @@ function wp_scm_curricullum_det($atts, $content = null){
 	if($first_name) $name = $first_name." ".$last_name;
 	if(!$first_name) $name = $user->display_name; 
 
-?>
+	?>
 
-<?php //echo esc_html( get_user_meta( $id, 'first_name', true ). " ".get_user_meta( $user->ID, 'last_name', true ) ) ?>
+
 <div class="scm066_det_container">
 	<div class="scm066_det_col_1">
 		<div >
@@ -265,7 +265,7 @@ function wp_scm_curricullum_det($atts, $content = null){
 		</div>
 
 		<div class="det_curricullum">
-		
+			<?php echo do_shortcode('[scm_pt_curricullum_list]') ?>
 		</div>
 	</div>
 </div>
@@ -351,3 +351,137 @@ function wp_scm_curricullum_admin_panel($atts, $content = null){
 }
 add_shortcode("wp_scm_curricullum_admin_panel", "wp_scm_curricullum_admin_panel");
 
+
+
+
+
+function curricullums_post_type() {
+	$labels = array(
+		'name'                  => _x( 'Curricullum', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Curricullum', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( 'Curricullum', 'text_domain' ),
+		'name_admin_bar'        => __( 'Curricullum', 'text_domain' ),
+		'archives'              => __( 'Item Archives', 'text_domain' ),
+		'attributes'            => __( 'Item Attributes', 'text_domain' ),
+		'parent_item_colon'     => __( 'Parent Curricullum:', 'text_domain' ),
+		'all_items'             => __( 'All Curricullum', 'text_domain' ),
+		'add_new_item'          => __( 'Add New Curricullum', 'text_domain' ),
+		'add_new'               => __( 'New Curricullum', 'text_domain' ),
+		'new_item'              => __( 'New Item', 'text_domain' ),
+		'edit_item'             => __( 'Edit Curricullum', 'text_domain' ),
+		'update_item'           => __( 'Update Curricullum', 'text_domain' ),
+		'view_item'             => __( 'View Curricullum', 'text_domain' ),
+		'view_items'            => __( 'View Items', 'text_domain' ),
+		'search_items'          => __( 'Search curricullums', 'text_domain' ),
+		'not_found'             => __( 'No curricullums found', 'text_domain' ),
+		'not_found_in_trash'    => __( 'No curricullums found in Trash', 'text_domain' ),
+		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+		'items_list'            => __( 'Items list', 'text_domain' ),
+		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+	);
+	$args = array(
+		'label'                 => __( 'Curricullum', 'text_domain' ),
+		'description'           => __( 'Curricullum information pages.', 'text_domain' ),
+		'labels'                => $labels,
+		// 'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'custom-fields', ),
+		'supports'              => array( 'title','author','editor' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'curricullum', $args );
+}
+add_action( 'init', 'curricullums_post_type', 0 );
+
+
+
+function scm_pt_curricullum_list($atts, $content = null){
+	$ret = '';
+	// $ret .= '---scm_pt_curricullum_list---';
+
+	$args = array(
+		 'posts_per_page' => 20,
+		 'post_type' => 'curricullum',
+		 // 's' => $nome
+	);
+	$cv = get_posts( $args );
+	// echo '<pre>';
+	// print_r($show_curricullum);
+	// echo '</pre>';
+	$ret .= '<div style="padding:0 10px;">';
+	$ret .= '<h4>HISTÓRICO CURRICULAR</h4>';
+	$ret .= '</div>';
+	foreach ($cv as $key => $value) {
+		$titulo .= $value->post_title;
+		$descricao = $value->post_content;
+
+		$ret .= '<div style="padding:0 10px;">';
+		$ret .= '<strong>'.$titulo.'</strong>';
+		$ret .= '<br>';
+		$ret .= $descricao;
+		$ret .= '<br>';
+		$ret .= '<br>';
+		$ret .= '</div>';
+
+	}
+
+	return $ret;
+}
+add_shortcode("scm_pt_curricullum_list", "scm_pt_curricullum_list");
+
+
+/*
+
+Array
+(
+    [0] => WP_Post Object
+        (
+            [ID] => 72
+            [post_author] => 1
+            [post_date] => 2017-10-10 08:31:15
+            [post_date_gmt] => 2017-10-10 11:31:15
+            [post_content] => 
+sdsdsds
+
+sdsdsds
+
+
+            [post_title] => sdsds
+            [post_excerpt] => 
+            [post_status] => publish
+            [comment_status] => open
+            [ping_status] => closed
+            [post_password] => 
+            [post_name] => sdsds
+            [to_ping] => 
+            [pinged] => 
+            [post_modified] => 2017-10-10 08:31:15
+            [post_modified_gmt] => 2017-10-10 11:31:15
+            [post_content_filtered] => 
+            [post_parent] => 0
+            [guid] => http://localhost/075-scm-curricullum/curricullum/sdsds/
+            [menu_order] => 0
+            [post_type] => curricullum
+            [post_mime_type] => 
+            [comment_count] => 0
+            [filter] => raw
+        )
+
+)
+
+*/
