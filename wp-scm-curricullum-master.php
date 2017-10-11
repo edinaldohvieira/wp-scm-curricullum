@@ -553,7 +553,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>PRINCIPAIS ATRIBUIÇÕES E ESPECIALIDADES</strong></div>';
 	foreach ($cv as $key => $value) {
 		$titulo = $value->post_title;
-		$descricao = $value->post_content;
+		$descricao = nl2br($value->post_content);
 
 		$ret .= '<div style="padding:0 10px;">';
 		$ret .= '<strong>'.$titulo.'</strong>';
@@ -585,7 +585,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>CONHECIMENTO TÉCNICO</strong></div>';
 	foreach ($cv as $key => $value) {
 		$titulo = $value->post_title;
-		$descricao = $value->post_content;
+		$descricao = nl2br($value->post_content);
 
 		$ret .= '<div style="padding:0 10px;">';
 		$ret .= '<strong>'.$titulo.'</strong>';
@@ -616,7 +616,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>PARTICIPAÇÕES EM CURSOS E EVENTOS</strong></div>';
 	foreach ($cv as $key => $value) {
 		$titulo = $value->post_title;
-		$descricao = $value->post_content;
+		$descricao = nl2br($value->post_content);
 
 		$ret .= '<div style="padding:0 10px;">';
 		$ret .= '<strong>'.$titulo.'</strong>';
@@ -647,7 +647,7 @@ function scm_pt_curricullum_list($atts, $content = null){
 	$ret .= '<div style="padding:0 10px;border-bottom:1px solid #000000; "><strong>ÚLTIMOS TRABALHOS REALIZADOS</strong></div>';
 	foreach ($cv as $key => $value) {
 		$titulo = $value->post_title;
-		$descricao = $value->post_content;
+		$descricao = nl2br($value->post_content);
 
 		$ret .= '<div style="padding:0 10px;">';
 		$ret .= '<strong>'.$titulo.'</strong>';
